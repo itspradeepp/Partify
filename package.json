@@ -1,0 +1,15 @@
+{
+  "name": "partify-backend",
+  "version": "1.0.0",
+  "description": "Node.js backend for Partify app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "run": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partify Vehicle Selector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div style="text-align:center; margin-bottom: 24px;">
+    <img src="/Logo.png" alt="Partify Logo" style="max-width:200px; display:block; margin:0 auto;" />
+    <h2 style="margin-top: 16px;">Welcome to the Partify</h2>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; min-height: 50vh;">
+    <div style="width: 100%; max-width: 400px;">
+      <h1 style="text-align:center;">Select Your Vehicle</h1>
+      <form id="vehicle-form">
+        <select id="year"><option value="">Select Year</option></select>
+        <select id="make"><option value="">Select Make</option></select>
+        <select id="model"><option value="">Select Model</option></select>
+        <select id="productType"><option value="">Select Product Type</option></select>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
