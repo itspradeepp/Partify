@@ -2,7 +2,6 @@ import { renderForm } from './views/formview.js';
 import { handleFormSubmit } from './controllers/formController.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Render the form initially
   renderForm();
 });
 
@@ -20,9 +19,6 @@ fetch('/api/data')
     populateSelect('make', makes);
     populateSelect('model', models);
     populateSelect('productType', productTypes);
-
-    // Add form submit handler after form is ready
-    document.getElementById('vehicle-form').addEventListener('submit', handleFormSubmit);
   })
   .catch(error => console.error('Error fetching data:', error));
 
@@ -40,3 +36,43 @@ function populateSelect(id, options) {
     }
   });
 }
+
+document.getElementById('vehicle-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const year = document.getElementById('year').value;
+  const make = document.getElementById('make').value;
+  const model = document.getElementById('model').value;
+  let valid = true;
+
+  // Remove previous error messages
+  document.querySelectorAll('.form-error').forEach(e => e.remove());
+  document.querySelectorAll('.form-error-highlight').forEach(e => e.classList.remove('form-error-highlight'));
+
+  function showError(id, message) {
+    const el = document.getElementById(id);
+    el.classList.add('form-error-highlight');
+    const error = document.createElement('div');
+    error.className = 'form-error';
+    error.style.color = 'red';
+    error.style.fontSize = '0.9em';
+    error.textContent = message;
+    el.parentNode.insertBefore(error, el.nextSibling);
+  }
+
+  if (!year) {
+    showError('year', 'Year is required');
+    valid = false;
+  }
+  if (!make) {
+    showError('make', 'Make is required');
+    valid = false;
+  }
+  if (!model) {
+    showError('model', 'Model is required');
+    valid = false;
+  }
+
+  if (valid) {
+    handleFormSubmit(event);
+  }
+});
